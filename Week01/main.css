@@ -1,0 +1,155 @@
+/* Import Lora font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
+/* Global styles */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Helvetica, Arial, sans-serif; /* Body copy font */
+  color: #333; /* Body copy color */
+}
+
+/* Apply Lora to the headline elements */
+h1, h2 {
+  font-family: 'Lora', serif;
+}
+h1{
+    font-size: xxx-large;
+}
+
+/* Style navigation links globally (applies to both small and large screens) */
+nav a {
+  font-family: 'Lora', serif;  /* Use the same font as headlines */
+  text-decoration: none;        /* Remove underline */
+  color: #666;                  /* Normal and visited state */
+}
+
+nav a:visited {
+  color: #666;                  /* Visited links */
+}
+
+nav a:active {
+  color: #DEB887;               /* Active state */
+}
+
+nav a:hover {
+  color: #00ddff;               /* Hover state */
+}
+
+/* Exception for the site title link */
+h1 a {
+  color: #333;                  /* Same color as other text */
+  text-decoration: none;        /* No underline */
+}
+
+h1 a:hover, h1 a:active {
+  color: #333;                  /* No hover or active change for the title */
+}
+h2 a{
+    text-decoration: none;        /* Remove underline */
+    color: #666;
+}
+.post-content a{
+    text-decoration: none;        /* Remove underline */  
+    color: #666;
+}
+
+/* Small screens */
+@media screen and (max-width: 600px) {
+  /* Center content and apply large margins on the sides */
+  body {
+    text-align: center;
+  }
+
+  /* Add large margins on the sides of the main content */
+  main {
+    margin: 0 20px;
+  }
+
+  /* Add a light grey line (border) above and below the nav */
+  nav {
+    border-top: 2px solid #d0d0d0;  /* Light grey line */
+    border-bottom: 2px solid #d0d0d0; /* Light grey line */
+    padding: 10px 0;
+  }
+
+  /* Remove bullets from nav list */
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  /* Add a light grey line under the post date */
+  .post-date {
+    border-bottom: 2px solid #d0d0d0; /* Light grey line */
+    padding: 10px 0;
+    text-align: right;
+
+  }
+
+  /* Adjust margins and padding for sections */
+  .post-content {
+    margin-bottom: 30px;
+  }
+}
+
+/* Large screens */
+@media screen and (min-width: 601px) {
+    h1{
+        text-align: center;
+    }
+  /* Navigation in one line, aligned to the right */
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;              /* Display links in one line */
+    justify-content: flex-end;  /* Align nav links to the right */
+  }
+
+  nav li {
+    margin-left: 20px;          /* Space between nav items */
+  }
+  nav {
+    border-top: 2px solid #d0d0d0;  /* Light grey line */
+    border-bottom: 2px solid #d0d0d0; /* Light grey line */
+    padding: 10px 0;
+  }
+
+
+  /* Main content layout for large screens */
+  main {
+    display: flex;
+    flex-direction: column; /* Maintain column flow */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Layout for articles */
+  article {
+    display: flex;
+    align-items: stretch;        /* Ensure date and content stretch to full height */
+    margin-bottom: 0;            /* Remove bottom margin so no gap with horizontal line */
+  }
+
+  /* Style for the post date on the left */
+  .post-date {
+    flex: 0 0 150px;             /* Fix date width */
+    text-align: left;
+    border-right: 1px solid #d0d0d0; /* Vertical line to the right of the date */
+    padding-right: 10px;
+    margin-right: 20px;
+    padding-bottom: 0;           /* Ensure no padding prevents the vertical line */
+    
+  }
+
+  /* Post content aligned to the right of the date */
+  .post-content {
+    flex-grow: 1;                  /* Take up remaining space */
+  }
+
+  /* Separator line between articles */
+  article + article {
+    border-top: 1px solid #d0d0d0; /* Horizontal line separating articles */
+    margin-top: 0;                 /* Remove margin so horizontal and vertical lines touch */
+  }
+}

@@ -1,0 +1,75 @@
+// colors
+$body-background-color: tan;
+$form-background-color: grey;
+$input-color: white;
+$headlines-color: white;
+$break-small: 20em;
+$break-medium: 31em;
+$break-large: 60em;
+
+@mixin flex-container($axis, $wrap: nowrap) {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: $axis $wrap;
+    -ms-flex-flow: $axis $wrap;
+    flex-flow: $axis $wrap;
+}
+
+//set breakpoint sizes
+@mixin breakpoint($break) {
+    @if $break == large {
+        @media (max-width: $break-large) { @content; }
+    }
+    @else if $break == medium {
+        @media (max-width: $break-medium) { @content; }
+    }
+    @else if $break == small {
+        @media (max-width: $break-small) { @content; }
+    }
+    @else {
+        @media ($break) { @content; }
+    }
+}        
+
+fieldset > div {
+    @include flex-container(row, wrap);        
+}
+
+body {
+    background-color: $body-background-color;          
+}
+
+#contactform {
+    background-color: $form-background-color;
+
+    input, textarea {
+        background-color: $input-color;
+        flex: 2;
+    }
+
+    // Small screens
+    @include breakpoint(small) {
+        input, textarea {
+            width: 100%; // Input boxes take full width
+        }
+        label {
+            display: block; // Labels appear above inputs
+            margin-bottom: 5px;
+        }
+    }
+
+    // Medium and large screens
+    @include breakpoint(medium) {
+        input, textarea {
+            width: auto; // Reset width to default
+            flex: 2; // Keep flex property
+        }
+        label {
+            display: inline-block; // Labels go next to inputs
+            width: 20%; // Adjust width as needed
+            margin-right: 10px;
+        }
+    }
+}
